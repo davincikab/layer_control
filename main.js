@@ -146,8 +146,69 @@ map.on("load", function(e) {
         }
     });
 
-    
+    // mvi layer
+    map.addSource("mvi", {
+        type:'geojson',
+        data:'layers/mvi.geojson'
+    });
 
+    map.addLayer({
+        id:'mvi',
+        source:'mvi',
+        type:'fill',
+        paint:{
+            'fill-color':[
+                'match',
+                ['get', 'Vulnerabil'],
+                'Low',
+                '#fee0d2',
+                'Medium',
+                '#fc9272',
+                'High',
+                '#de2d26',
+                'transparent'
+            ],
+            'fill-opacity':0.9
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
+
+    // Average AM peak trip
+    map.addSource("average-am-trip", {
+        type:"geojson",
+        data:"layers/average_am_peak_trip.geojson"
+    });
+
+    map.addLayer({
+        id:'average-am-trip',
+        source:'average-am-trip',
+        type:'fill',
+        paint:{
+            'fill-opacity':0.9,
+            'fill-color':[
+                'step',
+                ['get', 'Average_AM'],
+                'red',
+                3500,
+                'brown',
+                4500,
+                'yellow',
+                5000,
+                'lightgreen',
+                6500,
+                'green',
+                8000,
+                'darkgreen',
+                14200,
+                'transparent',
+            ]
+        },
+        layout:{
+            visibility:"none"
+        }
+    })
 });
 
 var layers = {
