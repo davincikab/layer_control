@@ -9,20 +9,260 @@
         body {
             padding:0;
             margin:0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 14px;
         }
         #map {
             width:100%;
             height: 100vh;
+            z-index: 1;
         }
 
         .layer-control{
             background-color: white;
             padding: 5px 6px;
         }
+
+        .legend-container {
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 1;
+            margin: 10px 10px;
+            background-color: white;
+            padding: 5px 6px;
+            height:95vh;
+            width: 250px;
+            overflow-y: scroll;
+        }
+
+        .legend-item {
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            margin:5px 0px;
+        }
+
+        .legend-item span {
+            padding:1px;
+            margin-right: 10px;
+        }
+
+        .legend-entry {
+            margin: 4px;
+            display: flex;
+        }
+        .legend-entry div {
+            padding:1px 6px;
+            margin-right: 10px;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .legend-title {
+            margin: 0;
+            text-align: center;
+            font-size: 1em;
+        }
     </style>
 </head>
 <body>
     <div class="map" id="map"></div>
+
+    <div class="legend-container">
+        <h5 style="margin:0px; font-size:18px">Legend</h5>
+        <div class="legend-section d-none" id="mvi">
+            <h6 class="legend-title">Mobility Vulnerability Index</h6>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fee0d2;"> </div>
+                Low
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fc9272;"> </div>
+                Medium
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #de2d26;"> </div>
+                High
+            </div>
+        </div>
+        <div class="legend-section d-none" id="population">
+            <h6 class="legend-title">Population Map</h6>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fee5d9;"></div>
+                0 - 1000
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fcae91;"></div>
+                1000 - 1500
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fb6a4a;"></div>
+                1500 - 2000
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color:#de2d26;"> </div>
+                2000 - 3000
+            </div>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #a50f15;"> </div>
+                3000 - 7000
+            </div>
+        </div>
+
+        <div class="legend-section d-none" id="paratransit-activity">
+            <h6 class="legend-title">Paratransit Activity</h6>
+
+            <div class="legend-entry">
+                <div style="width:3.3px; height: 3.3px; border-radius:50%; padding:0; background-color: purple;"> </div>
+                0 - 500
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:6.6px; height: 6.6px; border-radius:50%; padding:0; background-color: purple;"> </div>
+                500 - 1000
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:10px; height: 10px; border-radius:50%; padding:0; background-color: purple;"> </div>
+                1000 - 1500
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:13.3px; height: 13.3px; border-radius:50%; padding:0; background-color: purple;"> </div>
+                1500 - 2000
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:16.8px; height: 16.8px; border-radius:50%; padding:0; background-color: purple;"> </div>
+                2000 - 3300
+            </div>
+        </div>
+
+        <div class="legend-section d-none" id="transit-activity">
+            <h6 class="legend-title">Transit Activity</h6>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fee0d2;"> </div>
+                Low
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fc9272;"> </div>
+                Medium
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #de2d26;"> </div>
+                High
+            </div>
+        </div>
+
+        <div class="legend-section d-none" id="average-am-trip">
+            <h6 class="legend-title">Unemployment Rate</h6>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: red;"> </div>
+                0 - 3500
+            </div>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: brown;"> </div>
+                3500 - 4500
+            </div>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: yellow;"> </div>
+                4500 - 5000
+            </div>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: lightgreen;"> </div>
+                5000 - 6500
+            </div>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: green;"> </div>
+                6500 - 8000
+            </div>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: darkgreen"> </div>
+                8000 - 14200
+            </div>
+        </div>
+
+        <div class="legend-section d-none" id="employees">
+            <h6 class="legend-title">Number of Employees</h6>
+
+            <div class="legend-entry">
+                <div style="width:4px; height: 4px; border-radius:2px; padding:0; background-color: orange;"> </div>
+                100
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:5px; height: 5px; border-radius:2.5px; padding:0; background-color: orange;"> </div>
+                500
+            </div>
+            <div class="legend-entry">
+                <div style="width:6.4px; height: 6.4px; border-radius:3.2px; padding:0; background-color: orange;"> </div>
+                1000
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:16.8px; height: 16.8px; border-radius:8.4px; padding:0; background-color: orange;"> </div>
+                5000
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:30px; height: 30px; border-radius:15px; padding:0; background-color: orange;"> </div>
+                10,000
+            </div>
+
+        </div>
+        <div class="legend-section d-none" id="unemployment-rate">
+            <h6 class="legend-title">Unemployment Rate</h6>
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #feebe2;"> </div>
+                0% - 5%
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #fbb4b9;"> </div>
+                5% - 10%
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #f768a1;"> </div>
+                10% - 15%
+            </div>
+
+            <div class="legend-entry">
+                <div style="width:20px; height: 10px; background-color: #ae017e;"> </div>
+                15% - 20%
+            </div>
+
+        </div>
+        <div class="legend-section d-none" id="transit-route">
+            <div class="legend-item">
+                <span style="width:20px; height: 5px; background-color: green;"> </span>
+                Transit Route
+            </div>
+        </div>
+        <div class="legend-entry" id="census-block">
+            <div class="legend-item">
+                <span style="width:20px; height: 10px; background-color: gray;"></span>
+                Census Block
+            </div>
+        </div>
+        <div class="legend-entry" id="city-boundary">
+            <div class="legend-item">
+                <span style="width:20px; height: 10px; background-color: white;"></span>
+                City Boundary
+            </div>
+        </div>
+    </div>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
     <script src="main.js"></script>

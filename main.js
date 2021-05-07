@@ -313,6 +313,11 @@ class LayerControl {
 
         var visibility = checked ? 'visible' : 'none';
         this._map.getLayer(layerId) ? this._map.setLayoutProperty(layerId, 'visibility', visibility) : false;
+
+        // update the legend items
+        let element = document.getElementById(layerId);
+        console.log(element)
+        checked ? element.classList.remove("d-none") : element.classList.add("d-none");
     }
 
     onAdd(map) {
@@ -330,7 +335,7 @@ class LayerControl {
             layerCheckbox.type = "checkbox";
             layerCheckbox.className = "layer-element";
             layerCheckbox.value = layer;
-            layerCheckbox.id = layer;
+            // layerCheckbox.id = layer;
 
             layerDiv.append(layerCheckbox);
             layerDiv.innerHTML += "<label>"+ key +"</label>"
