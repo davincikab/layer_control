@@ -58,14 +58,38 @@ map.on("load", function(e) {
         type:'line',
         paint:{
             'line-color':'gray',
-            'line-width':2,
+            'line-width':0.5,
         },
         layout:{
             'visibility':'none'
         }
     });
 
-    // 
+    // transit activity
+    map.addSource("transit-activity", {
+        type:'geojson',
+        data:'layers/transit_activity.geojson'
+    });
+
+    map.addLayer({
+        id:'transit-activity',
+        source:'transit-activity',
+        type:'fill',
+        paint:{
+            'fill-color':[
+                'match',
+                ['get', 'Transit_Ac'],
+                'Low',
+                '#fee0d2',
+                'Medium',
+                '#fc9272',
+                'High',
+                '#de2d26',
+                'transparent'
+            ],
+            'fill-opacity':0.9
+        }
+    })
 });
 
 var layers = {
