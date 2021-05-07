@@ -208,7 +208,85 @@ map.on("load", function(e) {
         layout:{
             visibility:"none"
         }
-    })
+    });
+
+    // Unemployment rate
+    map.addSource("unemployment-rate", {
+        type:'geojson',
+        data:'layers/unemployment_rate.geojson'
+    });
+
+    map.addLayer({
+        id:'unemployment-rate',
+        source:'unemployment-rate',
+        type:'fill',
+        paint:{
+            'fill-opacity':0.9,
+            'fill-color':[
+                'step',
+                ['get', 'Unemployme'],
+                '#feebe2',
+                5,
+                '#fbb4b9',
+                10,
+                '#f768a1',
+                15,
+                '#ae017e',
+                20,
+                'transparent'
+            ]
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
+
+    map.addLayer({
+        id:'unemployment-rate-line',
+        source:'unemployment-rate',
+        type:'line',
+        paint:{
+            'line-color':'white',
+            'line-width':0.1
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
+
+
+    // population map
+    map.addSource("population", {
+        type:'geojson',
+        data:'layers/population.geojson'
+    });
+
+    map.addLayer({
+        id:'population',
+        source:'population',
+        type:'fill',
+        paint:{
+            'fill-opacity':0.9,
+            'fill-color':[
+                'step',
+                ['get', 'Population'],
+                '#fee5d9',
+                1000,
+                '#fcae91',
+                1500,
+                '#fb6a4a',
+                2000,
+                '#de2d26',
+                3000,
+                '#a50f15',
+                7000,
+                'transparent'
+            ]
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
 });
 
 var layers = {
