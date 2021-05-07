@@ -29,10 +29,43 @@ map.on("load", function(e) {
     // city boundary
     map.addSource("city-boundary", {
         type:'geojson',
-        data:
-    })
-    // census block
+        data:'layers/city_boundary.geojson'
+    });
 
+    map.addLayer({
+        id:'city-boundary',
+        source:'city-boundary',
+        type:'line',
+        paint:{
+            'line-color':'white',
+            'line-width':2,
+            'line-dasharray':[5,2]
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
+
+    // census block
+    map.addSource("census-block", {
+        type:'geojson',
+        data:'layers/census_block.geojson'
+    });
+
+    map.addLayer({
+        id:'census-block',
+        source:'census-block',
+        type:'line',
+        paint:{
+            'line-color':'gray',
+            'line-width':2,
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
+
+    // 
 });
 
 var layers = {
