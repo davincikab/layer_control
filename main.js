@@ -88,8 +88,66 @@ map.on("load", function(e) {
                 'transparent'
             ],
             'fill-opacity':0.9
+        },
+        layout:{
+            'visibility':'none'
         }
-    })
+    });
+
+    map.addSource("employees", {
+        type:'geojson',
+        data:'layers/employees.geojson'
+    });
+
+    map.addLayer({
+        id:'employees',
+        source:'employees',
+        type:'circle',
+        paint:{
+            'circle-color':'red',
+            'circle-radius':[
+                'interpolate',
+                ['linear'],
+                ['get', 'Employees'],
+                100,
+                4,
+                10000,
+                30,
+            ]
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
+
+    map.addSource("paratransit-activity", {
+        type:'geojson',
+        data:'layers/paratransit_activity.geojson'
+    });
+
+    map.addLayer({
+        id:'paratransit-activity',
+        source:'paratransit-activity',
+        type:'circle',
+        paint:{
+            'circle-color':'purple',
+            'circle-radius':[
+                'interpolate',
+                ['linear'],
+                ['get', 'Total'],
+                0,
+                0,
+                3000,
+                20
+            ]
+        },
+        layout:{
+            'visibility':'none'
+        }
+    });
+
+    
+
 });
 
 var layers = {

@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "employees",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 1, "Name": "Travis Air Force Base U.S.", "Industry": "Military\/Government", "Address": "Travis Air Force Base, Fairfield, CA", "Employees": 13414 }, "geometry": { "type": "Point", "coordinates": [ -121.964050095863882, 38.27024591077312 ] } },
+{ "type": "Feature", "properties": { "Id": 2, "Name": "Fairfield-Suisun Unified School District", "Industry": "Education", "Address": "2490 Hilborn Road, Fairfield, CA 94534", "Employees": 2213 }, "geometry": { "type": "Point", "coordinates": [ -122.050610555700544, 38.276158620409412 ] } },
+{ "type": "Feature", "properties": { "Id": 3, "Name": "Solano Community College", "Industry": "Education", "Address": "4000 Suisun Valley Rd, Fairfield, CA 94534", "Employees": 750 }, "geometry": { "type": "Point", "coordinates": [ -122.124635174766411, 38.233086249606295 ] } },
+{ "type": "Feature", "properties": { "Id": 4, "Name": "County of Solano", "Industry": "Government", "Address": "675 Texas St, Fairfield, CA 94533", "Employees": 2633 }, "geometry": { "type": "Point", "coordinates": [ -122.041221700958559, 38.247836583160975 ] } },
+{ "type": "Feature", "properties": { "Id": 5, "Name": "City of Fairfield", "Industry": "Government", "Address": "1000 Webster St, Fairfield, CA 94533", "Employees": 553 }, "geometry": { "type": "Point", "coordinates": [ -122.044889171726936, 38.252095805584489 ] } },
+{ "type": "Feature", "properties": { "Id": 6, "Name": "North Bay Healthcare Center", "Industry": "Healthcare", "Address": "1200 B Gale Wilson Blvd, Fairfield, CA 94533", "Employees": 1969 }, "geometry": { "type": "Point", "coordinates": [ -122.048204219767825, 38.26198381952149 ] } },
+{ "type": "Feature", "properties": { "Id": 7, "Name": "Sutter Fairfield Medical Campus", "Industry": "Healthcare", "Address": "2700 Low Ct, Fairfield, CA 94534", "Employees": 475 }, "geometry": { "type": "Point", "coordinates": [ -122.08502691232556, 38.236938580701647 ] } },
+{ "type": "Feature", "properties": { "Id": 8, "Name": "Partnership HealthPlan", "Industry": "Healthcare", "Address": "4665 Business Center Dr, Fairfield, CA 94534", "Employees": 561 }, "geometry": { "type": "Point", "coordinates": [ -122.133635488748723, 38.221393338336881 ] } },
+{ "type": "Feature", "properties": { "Id": 9, "Name": "WestAmerica Bank", "Industry": "Banking", "Address": "4550 Mangels Blvd, Fairfield, CA 94534", "Employees": 418 }, "geometry": { "type": "Point", "coordinates": [ -122.131737632200057, 38.228094963126431 ] } },
+{ "type": "Feature", "properties": { "Id": 10, "Name": "Jelly Belly Candy Co.", "Industry": "Manufacturing", "Address": "1 Jelly Belly Ln, Fairfield, CA 94533", "Employees": 489 }, "geometry": { "type": "Point", "coordinates": [ -122.078941504941625, 38.238885574734525 ] } }
+]
+}
