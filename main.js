@@ -295,7 +295,7 @@ var layers = {
     'Paratransit Activity':'paratransit-activity',
     'Transit Activity':'transit-activity',
     'Average AM Peak Trips':'average-am-trip',
-    'Employee Count':'employee',
+    'Employee Count':'employees',
     'Unemployment Rate':'unemployment-rate',
     'Transit Route':'transit-route',
     'Census Block':'census-block',
